@@ -7,7 +7,7 @@ public class ButtonBehavior : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Level 1");
     }
     
     public void Credits()
@@ -22,6 +22,6 @@ public class ButtonBehavior : MonoBehaviour
     
     public void MainMenu()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Menu");
     }
 }
