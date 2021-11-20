@@ -8,11 +8,18 @@ using UnityEngine.SceneManagement;
  * Student #: 101245044
  * Date Last Modified: November 18, 2021
  * Program Description: Sets up the button behaviors to change the current scene
- * Revision History: (November 18) Added different button functions for main menu and game over
+ * Revision History:
+ * (November 18) Added different button functions for main menu and game over
+ * (November 19) Added load scene function for user to switch scenes more easily
  */
 
 public class ButtonBehavior : MonoBehaviour
 {
+    public void LoadScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Level 1");
@@ -32,4 +39,6 @@ public class ButtonBehavior : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+
 }
