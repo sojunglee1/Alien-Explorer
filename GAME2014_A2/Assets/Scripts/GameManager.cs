@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform player;
+    public Transform playerSpawnPoint;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.position = playerSpawnPoint.position + new Vector3(1, 0, 0);
     }
 }
