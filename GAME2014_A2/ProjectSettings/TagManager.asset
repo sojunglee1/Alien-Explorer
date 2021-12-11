@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Star
+  - Gold Coin
+  - Silver Coin
+  - Bronze Coin
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Platform
-  - 
+  - Obstacles
   - 
   - 
   - 

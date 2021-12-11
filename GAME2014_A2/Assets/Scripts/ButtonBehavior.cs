@@ -40,5 +40,9 @@ public class ButtonBehavior : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
 
 }
