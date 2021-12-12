@@ -50,6 +50,7 @@ MonoBehaviour:
   attackedSound: {fileID: 8300000, guid: 37727615e75d3904b8b2165418e7a58d, type: 3}
   deathSound: {fileID: 8300000, guid: e7129c1bab6905c4ea7cd7519956ae6b, type: 3}
   shootSound: {fileID: 8300000, guid: 953f80d302fd4894e8c2dda4c3ecb6ec, type: 3}
+  explodeSound: {fileID: 8300000, guid: 1fa9bf42693e4874aba5effe973869d7, type: 3}
 --- !u!82 &5132648846341421411
 AudioSource:
   m_ObjectHideFlags: 0

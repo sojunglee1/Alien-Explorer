@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip attackedSound;
     [SerializeField] private AudioClip deathSound;
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip explodeSound;
 
     private void Awake()
     {
@@ -71,5 +72,9 @@ public class AudioManager : MonoBehaviour
     public void ShootSound() //plays sound for when player shoots a bullet
     {
         PlaySound(shootSound);
+    }
+    public void ExplodeSound() //plays sound for when player lands on exploding platform
+    {
+        PlaySound(explodeSound);
     }
 }

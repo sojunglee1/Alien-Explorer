@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 454156274}
   - component: {fileID: 454156273}
   m_Layer: 5
-  m_Name: Dodge Tile
+  m_Name: Developer Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -932,7 +932,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Jumping Sound: MentalSanityOff \r\nSFX: phoenix1291\r\nMain Menu: Music
     by Matthew Pablo\r\nhttp://www.matthewpablo.com\r\nCredits: TAD\r\nInstructions:
-    TAD\nGame: pheonton"
+    TAD\nGame: pheonton\nUI SFX: p0ss"
 --- !u!222 &1325391957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -953,7 +953,7 @@ GameObject:
   - component: {fileID: 1372987980}
   - component: {fileID: 1372987979}
   m_Layer: 5
-  m_Name: Collect Tile
+  m_Name: Art Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 1391509143}
   - component: {fileID: 1391509142}
   m_Layer: 5
-  m_Name: Finish Tile
+  m_Name: Music Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

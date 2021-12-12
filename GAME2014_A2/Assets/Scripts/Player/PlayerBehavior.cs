@@ -43,8 +43,8 @@ public class PlayerBehavior : MonoBehaviour
     public LayerMask groundLayerMask;
     [Range(0.1f, 0.9f)]
     public float airControlFactor;
-    private float direction = 0;
-    private Rigidbody2D rb;
+    [HideInInspector] public float direction = 0;
+    [HideInInspector] public Rigidbody2D rb;
 
     // player's animation - shows animation state in editors & creates animator for player)
     [Header("Animation")]
@@ -153,13 +153,6 @@ public class PlayerBehavior : MonoBehaviour
     //checks when this game object starts colliding with another game object
     private void OnCollisionEnter2D(Collision2D other)  
     {
-        // checks collision between player and platform
-        if (other.gameObject.CompareTag("Platform"))
-        {
-            //  sets the player's transform to platform that it collided with (good for when player lands on top of moving platforms)
-            transform.SetParent(other.transform);
-        }
-
         // checks collision between player and other hazards or enemies
         if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Snail") || other.gameObject.CompareTag("Slime"))
         {

@@ -8,6 +8,7 @@ using UnityEngine;
  * Revision History:
  * (December 10) Added platform behaviors from my personal Game2014_Lab8 project
  * (December 12) Added directional behaviors (e.g. which direction does it start going to - left or right)
+ * (December 12) Added exploding platform behavior
  */
 
 //different types of platform movement
@@ -38,6 +39,9 @@ public class PlatformBehavior : MonoBehaviour
 
     //sets up which direction it starts going towards
     [SerializeField] private bool StartingRight = false;
+
+    //checks if this platform explodes or not
+    [SerializeField] public bool explodePlatform = false;
 
     void Start()
     {
@@ -96,6 +100,19 @@ public class PlatformBehavior : MonoBehaviour
                 //if not starting right (starting left), then start moving to the opposite direction (bottom left)
                 else transform.position = new Vector2(startingPosition.x - pingPongValue, startingPosition.y - pingPongValue);
                 break;
+        }
+    }
+    float time = 0;
+    //checks collision between this platform and other game objects
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //if platform collides with player, then make player jump away and destroy/explode platform
+        if (collision.gameObject.tag == "Player" && explodePlatform)
+        {
+            collision.gameObject.GetComponent<PlayerBehavior>().rb.AddForce(new Vector2(0, 1000));
+            AudioManager.audioManager.ExplodeSound();
+            Destroy(this.gameObject);
+
         }
     }
 }

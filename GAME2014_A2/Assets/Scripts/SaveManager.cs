@@ -23,7 +23,7 @@ public class SaveManager : MonoBehaviour
         //if the player already has save file, then print to text ui
         if (PlayerPrefs.HasKey("Score"))
         {
-            scoreText.text = "Score : " + PlayerPrefs.GetInt("Score").ToString();
+            scoreText.text = "Score - " + PlayerPrefs.GetInt("Score").ToString();
         }
         //if not, then print out score not available
         else scoreText.text = "Score Not Available";
