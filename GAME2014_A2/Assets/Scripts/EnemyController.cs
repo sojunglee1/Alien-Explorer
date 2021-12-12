@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*Source File Name: EnemyController
+ * Author's Name: Sojung (Serena) Lee
+ * Student #: 101245044
+ * Date Last Modified: December 12, 2021
+ * Program Description: Sets up the behaviors for enemy (e.g. movement, animation)
+ * Revision History:
+ * (December 11) Added basic functions (e.g. basic movement, LOS, animations) from personal GAME2014_Lab8 project
+ * (December 12) Added how much each enemy is worth
+ */
+
 public class EnemyController : MonoBehaviour
 {
+    //determines how much each enemy is worth when killed
     [Header("Points")]
     public int points;
 
+    //helps enemy detects player
     [Header("Player Detection")]
     public LOS enemyLOS;
 
+    //for basic movement (e.g. walking, ground detection)
     [Header("Movement")]
     public float runForce;
     public Transform lookAheadPoint;
@@ -18,14 +31,15 @@ public class EnemyController : MonoBehaviour
     public LayerMask groundLayerMask;
     public LayerMask wallLayerMask;
     public bool isGroundAhead;
+    private Rigidbody2D rb;
 
+    //for enemy animations (e.g. idle & walking)
     [Header("Animation")]
     public Animator animatorController;
 
-    private Rigidbody2D rb;
-
     void Start()
     {
+        //gets component for physics and animations
         rb = GetComponent<Rigidbody2D>();
         enemyLOS = GetComponent<LOS>();
         animatorController = GetComponent<Animator>();
@@ -33,18 +47,21 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        LookAhead();
-        LookInFront();
+        LookAhead();    //checks what's ahead of enemy (upcoming)
+        LookInFront(); //checks what's in front of enemy (current)
 
+        //if the enemy doesn't have a line of sight (LOS) of player, then continue with movement & enble a walking animation
         if (!HasLOS())
         {
             animatorController.enabled = true;
             animatorController.Play("Walk");
             MoveEnemy();
         }
-        else
-        {
+        else //if the enemy does have a LOS of player, then...
+        {   
+            //if this enemy is a fast snail, then run to player faster
             if (this.gameObject.tag == "Snail") rb.AddForce(Vector2.left * runForce * transform.localScale.x);
+            //if this enemy is a slime, then don't move
             if (this.gameObject.tag == "Slime") animatorController.enabled = false;
         }
     }
@@ -80,44 +97,43 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-
-    private void LookAhead()
+    private void LookAhead() //checks what's upcoming (ahead)
     {
         var hit = Physics2D.Linecast(transform.position, lookAheadPoint.position, groundLayerMask);
-        isGroundAhead = (hit) ? true : false;
+        isGroundAhead = (hit) ? true : false;   //ground check
     }
 
-    private void LookInFront()
+    private void LookInFront() //checks what's in front
     {
         var hit = Physics2D.Linecast(transform.position, lookInFrontPoint.position, wallLayerMask);
         if (hit)
         {
-            Flip();
+            Flip(); //if the enemy hits a wall, then flip the enemy to the other direction
         }
     }
 
     private void MoveEnemy()
     {
+        //if there's more ground in front of enemy, then continue moving
         if (isGroundAhead)
         {
             rb.AddForce(Vector2.left * runForce * transform.localScale.x);
             rb.velocity *= 0.90f;
         }
-        else
+        else //if there is no more ground, then flip to the other direction
         {
             Flip();
         }
     }
 
-    private void Flip()
+    private void Flip() //flips the sprite to face the opposite direction
     {
         transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
     }
 
-    // EVENTS
-
     private void OnCollisionEnter2D(Collision2D other)
     {
+        //if the enemy collides with the platform, then set its transform parent to the platform (easier for moving/floating platforms)
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(other.transform);
@@ -127,14 +143,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
+        //removes enemy's parent transform to itself after leaving platform
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(null);
         }
     }
 
-    // UTILITIES
-
+    //draws gizmos to show user what is enemy 'seeing'
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
