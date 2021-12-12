@@ -63,10 +63,12 @@ public class PlatformBehavior : MonoBehaviour
                 else transform.position = new Vector2(transform.position.x, startingPosition.y - pingPongValue);
                 break;
             case MovingPlatformDirection.DIAGONAL_UP:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
+                if (startingDirection) transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y + pingPongValue);
+                else transform.position = new Vector2(startingPosition.x - pingPongValue, startingPosition.y + pingPongValue);
                 break;
             case MovingPlatformDirection.DIAGONAL_DOWN:
-                transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y - pingPongValue);
+                if (startingDirection) transform.position = new Vector2(startingPosition.x + pingPongValue, startingPosition.y - pingPongValue);
+                else transform.position = new Vector2(startingPosition.x - pingPongValue, startingPosition.y - pingPongValue);
                 break;
         }
     }

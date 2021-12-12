@@ -26,12 +26,16 @@ public class PlayerBehavior : MonoBehaviour
     public LayerMask groundLayerMask;
     [Range(0.1f, 0.9f)]
     public float airControlFactor;
+    private float direction = 0;
 
     [Header("Animation")]
     public PlayerAnimationState state;
 
     private Rigidbody2D rb;
     private Animator animatorController;
+
+
+    
 
     void Start()
     {
@@ -46,6 +50,8 @@ public class PlayerBehavior : MonoBehaviour
             animatorController.SetInteger("AnimationState", (int)PlayerAnimationState.SHOOT); // JUMP State
             state = PlayerAnimationState.SHOOT;
         }
+
+        direction = transform.localScale.x;
     }
 
     void FixedUpdate()
@@ -123,6 +129,12 @@ public class PlayerBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(other.transform);
+        }
+
+        if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Snail") || other.gameObject.CompareTag("Slime"))
+        {
+            if (direction < 0) rb.AddForce(new Vector2(-150, 250)); // flinch
+            else rb.AddForce(new Vector2(150, 250)); // flinch
         }
     }
 

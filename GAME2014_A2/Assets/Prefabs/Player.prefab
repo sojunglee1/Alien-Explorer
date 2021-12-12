@@ -204,7 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381d99d7a22ca4b4a85edea1bc9f7f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LivesPanel: {fileID: 0}
+  Lives: 10
+  livesText: {fileID: 0}
   PointsPanel: {fileID: 0}
 --- !u!50 &4076382781728581321
 Rigidbody2D:

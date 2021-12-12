@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour
     public Transform player;
     public Transform playerSpawnPoint;
 
+    [SerializeField] List<ItemsBehavior> items;
+
     void Start()
     {
         player.position = playerSpawnPoint.position + new Vector3(1, 0, 0);
+
+        foreach(ItemsBehavior item in items)
+        {
+            Instantiate(item);
+        }
     }
 }
