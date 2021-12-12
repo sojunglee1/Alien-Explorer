@@ -22,6 +22,7 @@ public class ButtonBehavior : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerPrefs.DeleteKey("Score");
         SceneManager.LoadScene("Level 1");
     }
     

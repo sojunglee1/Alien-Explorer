@@ -12,10 +12,16 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] Text PointsPanel;
 
+    Rigidbody2D rb;
+
     void Start()
     {
         PlayerPoints = 0;
+
+        if (PlayerPrefs.HasKey("Score")) PlayerPoints = PlayerPrefs.GetInt("Score");
+
         lives = LivesPanel.GetComponentsInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -26,6 +32,7 @@ public class PlayerStats : MonoBehaviour
 
     public void RemoveLife()
     {
+        AudioManager.audioManager.DeathSound();
         for (int i = 0; i < lives.Length; i++)
         {
             if (lives[i] != null)
@@ -53,10 +60,18 @@ public class PlayerStats : MonoBehaviour
     {
         if (collision.gameObject.tag == "Finish")
         {
+            Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (collision.gameObject.tag == "Obstacle")
         {
+            rb.AddForce(new Vector2(150, 250)); // flinch
+            RemoveLife();
+        }        
+        if (collision.gameObject.CompareTag("Snail") || collision.gameObject.CompareTag("Slime"))
+        {
+            AudioManager.audioManager.AttackedSound();
+            rb.AddForce(new Vector2(150, 250)); // flinch
             RemoveLife();
         }
     }

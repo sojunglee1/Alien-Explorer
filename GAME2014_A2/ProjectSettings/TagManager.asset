@@ -5,16 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
-  - Star
-  - Gold Coin
-  - Silver Coin
-  - Bronze Coin
   - Obstacle
+  - Bullet
+  - Enemy
+  - Coin
+  - Star
+  - Snail
+  - Slime
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Platform

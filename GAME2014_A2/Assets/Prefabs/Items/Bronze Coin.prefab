@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8559655867615821798}
   m_Layer: 0
   m_Name: Bronze Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 5
-  itemName: 3
 --- !u!212 &8559655867615821797
 SpriteRenderer:
   m_ObjectHideFlags: 0

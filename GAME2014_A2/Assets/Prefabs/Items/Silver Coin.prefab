@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3545007813249821533}
   m_Layer: 0
   m_Name: Silver Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 25
-  itemName: 2
 --- !u!212 &3545007813249821534
 SpriteRenderer:
   m_ObjectHideFlags: 0

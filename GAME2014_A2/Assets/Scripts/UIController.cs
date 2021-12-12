@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour
 
     [Header("Button Control Events")]
     public static bool jumpButtonDown;
+    public static bool shootButtonDown;
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +40,13 @@ public class UIController : MonoBehaviour
     public void OnJumpButton_Up()
     {
         jumpButtonDown = false;
+    }
+    public void OnShootButton_Down()
+    {
+        shootButtonDown = true;
+    }
+    public void OnShootButton_Up()
+    {
+        shootButtonDown = false;
     }
 }

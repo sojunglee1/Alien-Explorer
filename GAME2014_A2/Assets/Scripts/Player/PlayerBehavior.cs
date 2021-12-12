@@ -7,6 +7,7 @@ public enum PlayerAnimationState
     IDLE,
     WALK,
     JUMP,
+    SHOOT,
     NUM_OF_ANIMS
 }
 public class PlayerBehavior : MonoBehaviour
@@ -36,6 +37,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) || UIController.shootButtonDown == true)
+        {
+            animatorController.SetInteger("AnimationState", (int)PlayerAnimationState.SHOOT); // JUMP State
+            state = PlayerAnimationState.SHOOT;
+        }
     }
 
     void FixedUpdate()
@@ -79,17 +89,17 @@ public class PlayerBehavior : MonoBehaviour
             animatorController.SetInteger("AnimationState", (int)PlayerAnimationState.JUMP); // JUMP State
             state = PlayerAnimationState.JUMP;
 
+
+            
             if (x != 0)
             {
                 x = FlipAnimation(x);
-
                 float horizontalMoveForce = x * horizontalForce * airControlFactor;
                 float mass = rb.mass * rb.gravityScale;
 
                 rb.AddForce(new Vector2(horizontalMoveForce, 0.0f) * mass);
             }
         }
-
     }
 
     private void CheckIfGrounded()
@@ -121,6 +131,7 @@ public class PlayerBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             transform.SetParent(null);
+            if (UIController.jumpButtonDown || Input.GetButton("Jump")) AudioManager.audioManager.JumpSound();
         }
     }
 

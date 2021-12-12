@@ -2,14 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Item
-{
-    STAR,
-    GOLD_COIN,
-    SILVER_COIN,
-    BRONZE_COIN
-}
-
 public class ItemsBehavior : MonoBehaviour
 {
     [SerializeField] private int points;
@@ -29,6 +21,10 @@ public class ItemsBehavior : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Collect();
+
+            if (this.gameObject.tag == "Coin") AudioManager.audioManager.CoinSound();
+            if (this.gameObject.tag == "Star") AudioManager.audioManager.StarSound();
+
             Destroy(this.gameObject);
         }
     }
