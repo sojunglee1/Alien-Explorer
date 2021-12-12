@@ -11,6 +11,7 @@ using UnityEngine;
  * (December 11) sets up LOS for enemy's detection using contact list from personal GAME2014_Lab8 project
  */
 
+//Class for creating line of sight for enemy
 [RequireComponent(typeof(PolygonCollider2D))]
 [System.Serializable]
 public class LOS : MonoBehaviour
@@ -20,7 +21,6 @@ public class LOS : MonoBehaviour
     public Collider2D collidesWith; // debug
     public ContactFilter2D contactFilter;
     public List<Collider2D> colliderList;
-
     private PolygonCollider2D LOSCollider;
 
     void Start()
@@ -33,6 +33,7 @@ public class LOS : MonoBehaviour
         Physics2D.GetContacts(LOSCollider, contactFilter, colliderList);
     }
 
+    //checks if LOS collider is colliding with other game objects
     private void OnTriggerEnter2D(Collider2D other)
     {
         //if enemy is colliding with other game object, then show it to editor

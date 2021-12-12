@@ -12,6 +12,7 @@ using UnityEngine;
  * (December 12) Added basic physics functions for bullet 
  */
 
+//Class for bullet movement behaviors
 public class BulletBehavior : MonoBehaviour
 {
     PlayerBehavior player;  //finds player - needed to player's forward direction & spawning point
@@ -41,6 +42,7 @@ public class BulletBehavior : MonoBehaviour
         else Move(1);
     }
 
+    //sets up the bullet movement when spawned
     private void Move(int direction)
     {
         //moves the bullet's horizontal position based on direction, speed, and time
@@ -63,6 +65,7 @@ public class BulletBehavior : MonoBehaviour
         }
     }
 
+    //checks when player starts colliding with other game objects
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the bullet hits an enemy -> adds points, destroys enemy, and then destroys itself

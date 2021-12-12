@@ -12,6 +12,7 @@ using UnityEngine.UI;
  * (December 12) Added shooting function to instantiate a bullet
  */
 
+//Class for bullet management
 public class BulletSpawn : MonoBehaviour
 {
     [SerializeField] Transform SpawnPoint;  //creates the spawning point (position) for each bullet

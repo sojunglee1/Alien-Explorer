@@ -12,6 +12,7 @@ using UnityEngine;
  * (December 12) Added jump, coin, star, attacked, death, and shoot sounds
  */
 
+//Class for audio management for sound effects played in game
 public class AudioManager : MonoBehaviour
 {
     //creates audio manager static variable (for easier access to other scripts)
@@ -28,10 +29,13 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        //sets up the static class
         audioManager = this;
         audioSource = GetComponent<AudioSource>();
     }
-    public void PlaySound(AudioClip sfx) //plays sfx once
+
+    //plays a specific sfx once
+    public void PlaySound(AudioClip sfx) 
     {
         if (!audioSource.isPlaying)
         {

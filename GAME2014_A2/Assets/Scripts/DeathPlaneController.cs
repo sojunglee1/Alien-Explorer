@@ -14,6 +14,7 @@ using UnityEngine;
  * (December 12) Added "RemoveLife" function so player's loses life whenever overlaps with death plane
  */
 
+//Class for death plane and how game object responses to it
 public class DeathPlaneController : MonoBehaviour
 {
     //set up player's respawn point
@@ -27,6 +28,7 @@ public class DeathPlaneController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
+    //checks if other game objects collides with it
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if player touches death plane then remove a life & respawn back to original point

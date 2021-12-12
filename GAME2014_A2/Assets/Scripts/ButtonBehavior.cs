@@ -15,6 +15,7 @@ using UnityEngine.SceneManagement;
  * (December 12) Delete any saved files to reset points anytime game restarts
  */
 
+//Class for button On Click behavior
 public class ButtonBehavior : MonoBehaviour
 {
     //loads scene with whatever level name (used only for Unity editor)

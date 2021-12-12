@@ -10,7 +10,8 @@ using UnityEngine;
  * (December 12) Added directional behaviors (e.g. which direction does it start going to - left or right)
  */
 
-public enum MovingPlatformDirection //different types of platform movement
+//different types of platform movement
+public enum MovingPlatformDirection 
 {
     HORIZONTAL,
     VERTICAL,
@@ -19,6 +20,7 @@ public enum MovingPlatformDirection //different types of platform movement
     NUM_OF_DIRECTIONS
 }
 
+//Class for platform movement behavior
 public class PlatformBehavior : MonoBehaviour
 {
     //sets up basic physics movement (e.g. speed, direction, distance)
@@ -55,6 +57,7 @@ public class PlatformBehavior : MonoBehaviour
         }
     }
 
+    //creates different types of movement for platforms
     private void MovePlatform()
     {
         //pingpong value (goes back and forth)

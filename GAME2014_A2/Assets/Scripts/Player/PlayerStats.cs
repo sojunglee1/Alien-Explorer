@@ -17,6 +17,7 @@ using UnityEngine.SceneManagement;
  * (December 12) Moved flinching to Player Behavior script (for better organization)
  */
 
+//Class for player stats
 public class PlayerStats : MonoBehaviour
 {
     [HideInInspector] public static int PlayerPoints = 0;   //total number of accumulated points
@@ -63,6 +64,7 @@ public class PlayerStats : MonoBehaviour
         PlayerPoints += i;
     }
 
+    //checks for when player starts colliding with other game objects
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if the player touches the red finish flag, then save player's points for next level & load next level

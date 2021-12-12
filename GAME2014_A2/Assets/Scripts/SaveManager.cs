@@ -13,6 +13,7 @@ using UnityEngine.UI;
  * (December 12) Removed unnecessary variable (e.g. score)
  */
 
+//Class for score UI
 public class SaveManager : MonoBehaviour
 {
     //gets text ui component

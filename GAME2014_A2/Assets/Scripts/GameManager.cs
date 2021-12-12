@@ -12,6 +12,7 @@ using UnityEngine;
  * (December 12) Added random items - for each item in level 3, randomize its location
  */
 
+//class for managing other game objects (e.g. spawn point, random items)
 public class GameManager : MonoBehaviour
 {
     //sets up player's starting point

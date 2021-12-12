@@ -14,24 +14,25 @@ using UnityEngine.SceneManagement;
  * (December 12) Removed unnecessary "SetStartingPoints" function
  */
 
+//Class for items
 public class ItemsBehavior : MonoBehaviour
 {
     [SerializeField] private int points; // serialized points so each item is worth different number of points
-
 
     private void Start()
     {
         RandomizeLocation(); // randomize each item's location in last level
     }
 
+    //whenever item is 'collected', add item's worth to player's total points
     public void Collect()
     {
-        PlayerStats.AddPoints(points); //whenever item is 'collected', add item's worth to player's total points
+        PlayerStats.AddPoints(points); 
     }
 
+    // if item overlaps with player (using trigger collision), collect points, play specific sound (depending on item type), and destroy item
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if item overlaps with player (using trigger collision), collect points, play specific sound (depending on item type), and destroy item
         if (collision.gameObject.tag == "Player")
         {
             Collect();

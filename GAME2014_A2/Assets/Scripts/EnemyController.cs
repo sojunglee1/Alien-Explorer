@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
  * (December 12) Added how much each enemy is worth
  */
 
+//Class for enemy movement behavior
 public class EnemyController : MonoBehaviour
 {
     //determines how much each enemy is worth when killed
@@ -66,6 +67,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //checks if enemy has line of sight of player
     private bool HasLOS()
     {
         if (enemyLOS.colliderList.Count > 0)
@@ -97,13 +99,15 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    private void LookAhead() //checks what's upcoming (ahead)
+    //checks what's upcoming (ahead) using linecast
+    private void LookAhead() 
     {
         var hit = Physics2D.Linecast(transform.position, lookAheadPoint.position, groundLayerMask);
         isGroundAhead = (hit) ? true : false;   //ground check
     }
 
-    private void LookInFront() //checks what's in front
+    //checks what's in front using linecast
+    private void LookInFront() 
     {
         var hit = Physics2D.Linecast(transform.position, lookInFrontPoint.position, wallLayerMask);
         if (hit)
@@ -112,6 +116,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //creates movement behavior for enemy
     private void MoveEnemy()
     {
         //if there's more ground in front of enemy, then continue moving
@@ -126,11 +131,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Flip() //flips the sprite to face the opposite direction
+    //flips the sprite to face the opposite direction
+    private void Flip() 
     {
         transform.localScale = new Vector3(transform.localScale.x * -1.0f, transform.localScale.y, transform.localScale.z);
     }
 
+    //checks collision with enemy and other game objecs
     private void OnCollisionEnter2D(Collision2D other)
     {
         //if the enemy collides with the platform, then set its transform parent to the platform (easier for moving/floating platforms)
@@ -138,9 +145,9 @@ public class EnemyController : MonoBehaviour
         {
             transform.SetParent(other.transform);
         }
-
     }
 
+    //checks when other game objects stop colliding with enemy
     private void OnCollisionExit2D(Collision2D other)
     {
         //removes enemy's parent transform to itself after leaving platform

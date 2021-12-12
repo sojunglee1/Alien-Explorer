@@ -12,6 +12,7 @@ using UnityEngine;
  * (December 12) Set up shoot button
  */
 
+//Class for setting up mobile screen UI controls
 public class UIController : MonoBehaviour
 {
     //gets game object that contains the mobile UI controls
@@ -30,6 +31,7 @@ public class UIController : MonoBehaviour
         CheckPlatform();
     }
 
+    //Check which OS/platform is game running on
     private void CheckPlatform()
     {
         //all platforms (e.g. apple, android, or windows) have same mobile screen UI layout/controls

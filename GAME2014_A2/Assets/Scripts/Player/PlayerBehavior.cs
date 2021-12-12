@@ -23,6 +23,8 @@ public enum PlayerAnimationState // different types of player animation states f
     SHOOT,
     NUM_OF_ANIMS
 }
+
+//Class for player movement behavior
 public class PlayerBehavior : MonoBehaviour
 {
     // for touch input - movement based on joystick's sensitivity
@@ -76,6 +78,7 @@ public class PlayerBehavior : MonoBehaviour
         CheckIfGrounded();
     }
 
+    //Creates player's movement behavior using physics and user input
     private void Move()
     {
         //gets horizontal axis from user's input (e.g. keyboard OR joystick)
@@ -129,14 +132,16 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    private void CheckIfGrounded()  //checks if the player is on the ground using raycast
+    //checks if the player is on the ground using raycast
+    private void CheckIfGrounded()  
     {
         RaycastHit2D hit = Physics2D.CircleCast(groundOrigin.position, groundRadius, Vector2.down, groundRadius, groundLayerMask);
 
         isGrounded = (hit) ? true : false;
     }
 
-    private float FlipAnimation(float x) //flips the player's animation based on local scale
+    //flips the player's animation based on local scale
+    private float FlipAnimation(float x) 
     {
         // depending on direction scale across the x-axis either 1 or -1
         x = (x > 0) ? 1 : -1;
@@ -145,6 +150,7 @@ public class PlayerBehavior : MonoBehaviour
         return x;
     }
 
+    //checks when this game object starts colliding with another game object
     private void OnCollisionEnter2D(Collision2D other)  
     {
         // checks collision between player and platform
@@ -163,6 +169,7 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    //checks when this game object doesn't start colliding with another game object
     private void OnCollisionExit2D(Collision2D other)
     {
         // if the player is no longer attached to platform, remove its parent transform to its own
